@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import '../../node_modules/reset-css//sass/reset';
+@import '../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+
+/*---------------------------Components---------------------------*/
+
+@import "./components/topbar";
+@import "./components/sidebar";
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+app-root{
+    height: 100%;
+    display: block;
+
+}
+
+.main-container{  
+  height: 100%;
+  .content{
+    padding: 1rem
+  }  
+}

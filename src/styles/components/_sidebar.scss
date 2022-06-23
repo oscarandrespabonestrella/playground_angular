@@ -1,0 +1,14 @@
+.logo{
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    img{
+        max-height: 35px;
+    }
+    span{
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
