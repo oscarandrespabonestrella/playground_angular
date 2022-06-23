@@ -20,4 +20,8 @@ describe('FilterByPipeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('test species Observable', done => {
+    
+  });
 });

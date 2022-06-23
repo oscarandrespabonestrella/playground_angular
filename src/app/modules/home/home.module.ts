@@ -11,7 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterByPipeComponent } from './pages/filter-by-pipe/filter-by-pipe.component';
-
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { FilterByPipeComponent } from './pages/filter-by-pipe/filter-by-pipe.com
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule
   ]
 })
 export class HomeModule { }
