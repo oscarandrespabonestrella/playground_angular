@@ -20,7 +20,7 @@ export class FilterByPipeComponent implements OnInit {
 
   searchInput: FormControl =  new FormControl("");
   
-  getGhibliSpecies$: Observable<any> = this.webServerService.getGhibliSpecies$();
+  getGhibliSpecies$: Observable<any> = this.webServerService.getGhibliSpecies();
 
   constructor( private webServerService: WebServerService) { }
 

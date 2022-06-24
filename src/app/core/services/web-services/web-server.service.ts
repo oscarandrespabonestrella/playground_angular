@@ -36,10 +36,10 @@ export interface Film{
   providedIn: 'root'
 })
 export class WebServerService {
-  getGhibliFilms$(): Observable<Film[]> {
+  getGhibliFilms(): Observable<Film[]> {
     return this.httpClient.get<Film[]>('https://ghibliapi.herokuapp.com/films');
   }
-  getGhibliSpecies$(): Observable<Specie[]> {
+  getGhibliSpecies(): Observable<Specie[]> {
     return this.httpClient.get<Specie[]>('https://ghibliapi.herokuapp.com/species');
   }
 

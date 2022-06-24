@@ -7,16 +7,20 @@ import {
 } from 'rxjs';
 import { Film, WebServerService } from '../../../../core/services/web-services/web-server.service';
 import {MatSort, Sort} from '@angular/material/sort';
+import { Select, Store } from '@ngxs/store';
+import { FilmsState } from 'src/app/store/films/films.state';
+import { DeleteFilm, RequestFilms } from 'src/app/store/films/films.actions';
 
 
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html'
+  templateUrl: './ngxs-example.component.html'
 })
-export class IndexComponent implements OnInit {
+export class NgxsExampleComponent implements OnInit {
 
   @ViewChild('empTbSort', {static: false}) empTbSort = new MatSort();
+
+  @Select(FilmsState.getFilms) films$!: Observable<Film[]>;
 
   allColumns: string[] = [    
     "title",
@@ -30,7 +34,8 @@ export class IndexComponent implements OnInit {
     "rt_score",    
     "url",
     "movie_banner",
-    "image"
+    "image",
+    "action"
   ];
 
   columns: FormControl = new FormControl([
@@ -48,7 +53,8 @@ export class IndexComponent implements OnInit {
       "title",
       "original_title",
       "description",
-      "image"
+      "image",
+      "action"
     ]),
     map(columns =>  columns.filter((value: string) => this.allColumns.indexOf(value) !== -1))
   );
@@ -58,7 +64,7 @@ export class IndexComponent implements OnInit {
   getGhibliFilms$: Observable<any> = this.searchInput.valueChanges
     .pipe(startWith(""),debounceTime(400), distinctUntilChanged(), 
       switchMap(val => 
-        this.webServerService.getGhibliFilms()
+        this.films$
         .pipe(
           map(films => films
             .filter((film: Film) => film.title.toLowerCase().includes(val.toLowerCase()))            
@@ -72,13 +78,16 @@ export class IndexComponent implements OnInit {
     console.log(this.empTbSort);
   }
 
-  
+  deleteFilm(id: string){
+    this.store.dispatch(new DeleteFilm(id));
+  }
 
 
 
-  constructor(private webServerService: WebServerService) { }
+  constructor(private webServerService: WebServerService, private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new RequestFilms());
   }
 
 }

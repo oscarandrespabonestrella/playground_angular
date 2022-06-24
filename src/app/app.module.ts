@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { CoreModule } from './core/core.module';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { FilmsState } from './store/films/films.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     CoreModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    NgxsModule.forRoot([FilmsState],  {
+      developmentMode: !environment.production
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

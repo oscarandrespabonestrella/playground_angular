@@ -9,14 +9,17 @@ import { MatTableModule } from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterByPipeComponent } from './pages/filter-by-pipe/filter-by-pipe.component';
+import {  NgxsExampleComponent } from './pages/ngxs-example/ngxs-example.component';
 import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    FilterByPipeComponent
+    FilterByPipeComponent,
+    NgxsExampleComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import {MatSortModule} from '@angular/material/sort';
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule
   ]
 })
 export class HomeModule { }
