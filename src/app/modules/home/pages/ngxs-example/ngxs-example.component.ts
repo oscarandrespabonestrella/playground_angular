@@ -8,8 +8,10 @@ import {
 import { Film, WebServerService } from '../../../../core/services/web-services/web-server.service';
 import {MatSort, Sort} from '@angular/material/sort';
 import { Select, Store } from '@ngxs/store';
-import { FilmsState } from 'src/app/store/films/films.state';
-import { DeleteFilm, RequestFilms } from 'src/app/store/films/films.actions';
+import { FilmsState } from '../../../../store/films/films.state';
+import { DeleteFilm, EditFilm, RequestFilms } from '../../../../store/films/films.actions';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EditModalComponent } from '../../components/edit-modal/edit-modal.component';
 
 
 
@@ -82,9 +84,20 @@ export class NgxsExampleComponent implements OnInit {
     this.store.dispatch(new DeleteFilm(id));
   }
 
+  editFilm(film: Film): void{
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = film;
+    dialogConfig.minWidth = "50%";
+    const dialogRef = this.dialog.open(EditModalComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {      
+      this.store.dispatch(new EditFilm(result.id, result.title, result.description));
+    });
+  }
 
 
-  constructor(private webServerService: WebServerService, private store: Store) { }
+
+  constructor(private store: Store, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.store.dispatch(new RequestFilms());

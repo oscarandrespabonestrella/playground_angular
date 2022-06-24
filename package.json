@@ -22,6 +22,7 @@
     "@angular/router": "^14.0.0",
     "@ngxs/logger-plugin": "^3.7.4-dev.master-770aa34",
     "@ngxs/store": "^3.7.4",
+    "immer": "^9.0.15",
     "reset-css": "^5.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
