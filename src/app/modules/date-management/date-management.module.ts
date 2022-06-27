@@ -5,11 +5,13 @@ import { DateManagementRoutingModule } from './date-management-routing.module';
 import { FormatDateComponent } from './pages/format-date/format-date.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ExampleDateHelperComponent } from './pages/example-date-helper/example-date-helper.component';
 
 
 @NgModule({
   declarations: [
-    FormatDateComponent
+    FormatDateComponent,
+    ExampleDateHelperComponent
   ],
   imports: [
     CommonModule,
