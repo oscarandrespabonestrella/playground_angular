@@ -1,134 +1,52 @@
-<div class="result">
-	<span class="result__absolute">
-		{{ formattedDate }}
-	</span>
-	<span class="result__relative">
-		{{ relativeDate }}
-	</span>
-</div>
 
-<div class="slider">
-	<div class="slider__label">
-		Year
-	</div>
-	<input
-		#yearRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="yearDelta"
-		(input)="( yearDelta = +yearRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ yearDelta }}
-	</div>
-</div>
+<mat-card>
 
-<div class="slider">
-	<div class="slider__label">
-		Month
+	<h1>Date helper </h1>
+	
+	<div class="result">
+		<span class="result__absolute">
+			<b>
+				{{ formattedDate }}
+			</b>: {{ relativeDate }}
+		</span>	
 	</div>
-	<input
-		#monthRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="monthDelta"
-		(input)="( monthDelta = +monthRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ monthDelta }}
-	</div>
-</div>
-
-<div class="slider">
-	<div class="slider__label">
-		Day
-	</div>
-	<input
-		#dayRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="dayDelta"
-		(input)="( dayDelta = +dayRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ dayDelta }}
-	</div>
-</div>
-
-<div class="slider">
-	<div class="slider__label">
-		Hour
-	</div>
-	<input
-		#hourRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="hourDelta"
-		(input)="( hourDelta = +hourRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ hourDelta }}
-	</div>
-</div>
-
-<div class="slider">
-	<div class="slider__label">
-		Minute
-	</div>
-	<input
-		#minuteRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="minuteDelta"
-		(input)="( minuteDelta = +minuteRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ minuteDelta }}
-	</div>
-</div>
-
-<div class="slider">
-	<div class="slider__label">
-		Second
-	</div>
-	<input
-		#secondRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="secondDelta"
-		(input)="( secondDelta = +secondRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ secondDelta }}
-	</div>
-</div>
-
-<div class="slider">
-	<div class="slider__label">
-		Millis
-	</div>
-	<input
-		#millisecondRef
-		type="range"
-		min="-100"
-		max="100"
-		[value]="millisecondDelta"
-		(input)="( millisecondDelta = +millisecondRef.value )"
-		class="slider__input"
-	/>
-	<div class="slider__value">
-		{{ millisecondDelta }}
-	</div>
-</div>
+	
+	<table>
+		<tr>
+			<td>Year:</td>
+			<td><mat-slider #yearRef min="-100" max="100"  [value]="yearDelta" (input)="( yearDelta = +yearRef.value )"></mat-slider></td>
+			<td>{{yearDelta}}</td>
+		</tr>
+		<tr>
+			<td>Month:</td>
+			<td><mat-slider #monthRef min="-100" max="100"  [value]="monthDelta" (input)="( monthDelta = +monthRef.value )"></mat-slider></td>
+			<td>{{monthDelta}}</td>
+		</tr>
+		<tr>
+			<td>Day:</td>
+			<td><mat-slider #dayRef min="-100" max="100"  [value]="dayDelta" (input)="( dayDelta = +dayRef.value )"></mat-slider></td>
+			<td>{{dayDelta}}</td>
+		</tr>
+		<tr>
+			<td>Hour:</td>
+			<td><mat-slider #hourRef min="-100" max="100"  [value]="hourDelta" (input)="( hourDelta = +hourRef.value )"></mat-slider></td>
+			<td>{{hourDelta}}</td>
+		</tr>
+		<tr>
+			<td>Minute:</td>
+			<td><mat-slider #minuteRef min="-100" max="100"  [value]="minuteDelta" (input)="( minuteDelta = +minuteRef.value )"></mat-slider></td>
+			<td>{{minuteDelta}}</td>
+		</tr>
+		<tr>
+			<td>Seconds:</td>
+			<td><mat-slider #secondRef min="-100" max="100"  [value]="secondDelta" (input)="( secondDelta = +secondRef.value )"></mat-slider>></td>
+			<td>{{secondDelta}}</td>
+		</tr>
+		<tr>
+			<td>Millis:</td>
+			<td><mat-slider #millisecondRef min="-100" max="100"  [value]="millisecondDelta" (input)="( millisecondDelta = +millisecondRef.value )"></mat-slider></td>
+			<td>{{yearDelta}}</td>
+		</tr>
+	</table>
+	
+</mat-card>

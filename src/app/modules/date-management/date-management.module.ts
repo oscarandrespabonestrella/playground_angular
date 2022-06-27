@@ -5,7 +5,10 @@ import { DateManagementRoutingModule } from './date-management-routing.module';
 import { FormatDateComponent } from './pages/format-date/format-date.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
 import { ExampleDateHelperComponent } from './pages/example-date-helper/example-date-helper.component';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { ExampleDateHelperComponent } from './pages/example-date-helper/example-
     CommonModule,
     DateManagementRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSliderModule,
+    MatListModule,
+    MatCardModule
   ]
 })
 export class DateManagementModule { }
