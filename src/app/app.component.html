@@ -8,6 +8,8 @@
             <mat-list-item [routerLink]="['/']"> Filtering by switchmapping</mat-list-item>
             <mat-list-item [routerLink]="['/filter-by-pipe']"> Filtering by pipe</mat-list-item>
             <mat-list-item [routerLink]="['/ngxs-example']"> Ngxs Example</mat-list-item>
+            <mat-list-item [routerLink]="['/date-management']"> Date Management</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="menu">Design patterns</mat-list-item>
         </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -18,3 +20,12 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 
+
+<mat-menu #menu="matMenu" direction="horizontal">
+    <button mat-menu-item [routerLink]="['/design-patterns/strategy']">        
+        <span>Strategy</span>
+    </button>    
+    <button mat-menu-item [routerLink]="['/design-patterns/abstract-factory']">        
+        <span>Abstract factory</span>
+    </button>    
+</mat-menu>

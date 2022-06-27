@@ -12,6 +12,7 @@ import { FilmsState } from '../../../../store/films/films.state';
 import { DeleteFilm, EditFilm, RequestFilms } from '../../../../store/films/films.actions';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditModalComponent } from '../../components/edit-modal/edit-modal.component';
+import { ImagePreviewComponent } from '../../components/image-preview/image-preview.component';
 
 
 
@@ -92,6 +93,19 @@ export class NgxsExampleComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {      
       this.store.dispatch(new EditFilm(result.id, result.title, result.description));
+    });
+  }
+
+  previewImage(image: string): void{
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = image;
+    dialogConfig.hasBackdrop= true;
+    dialogConfig.panelClass = "image-preview";
+
+    const dialogRef = this.dialog.open(ImagePreviewComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {      
+      
     });
   }
 

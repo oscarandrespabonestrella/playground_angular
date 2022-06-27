@@ -1,0 +1,13 @@
+<h4>Abstract Factory</h4>
+<mat-form-field appearance="fill" [formControl]="type">
+  <mat-label>Choose type of food</mat-label>
+  <mat-select>
+    <mat-option [value]="'PIZZA'">
+      Pizza
+    </mat-option>
+    <mat-option [value]="'PASTA'">
+        Pasta
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+{{foods | json}}

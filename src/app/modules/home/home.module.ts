@@ -12,17 +12,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterByPipeComponent } from './pages/filter-by-pipe/filter-by-pipe.component';
-import {  NgxsExampleComponent } from './pages/ngxs-example/ngxs-example.component';
 import {MatSortModule} from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditModalComponent } from './components/edit-modal/edit-modal.component';
+
 
 @NgModule({
   declarations: [
     IndexComponent,
     FilterByPipeComponent,
-    NgxsExampleComponent,
-    EditModalComponent
   ],
   imports: [
     CommonModule,

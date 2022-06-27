@@ -5,7 +5,19 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./modules/home/home.module').then((m) =>m.HomeModule)
-  }
+  },
+  {
+    path: 'ngxs-example',
+    loadChildren: () => import('./modules/flux-architecture/flux-architecture.module').then((m) =>m.FluxArchitectureModule)
+  },
+  {
+    path: 'design-patterns',
+    loadChildren: () => import('./modules/dessign-patterns/dessign-patterns.module').then((m) =>m.DessignPatternsModule)
+  },
+  {
+    path: 'date-management',
+    loadChildren: () => import('./modules/date-management/date-management.module').then((m) =>m.DateManagementModule)
+  },
 ];
 
 @NgModule({
