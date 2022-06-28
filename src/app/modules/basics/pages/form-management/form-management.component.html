@@ -1,0 +1,188 @@
+<h1>Reactive Forms</h1>
+<hr />
+<h2>Single field binding</h2>
+
+<div style="display: flex; justify-content: start; align-items: center">
+  <div style="margin-right: 1em">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <input matInput placeholder="Ex. Pizza" [formControl]="singleField" />
+    </mat-form-field>
+  </div>
+  <div>
+    <p>{{ singleField.value }}</p>
+  </div>
+</div>
+
+<hr />
+<h2>Multiple field binding (formGroup)</h2>
+<div style="display: flex">
+  <mat-card [style.width]="'49%'" style="margin-right: 1em">
+    <mat-card-title>Register Form</mat-card-title>
+    <mat-card-content>
+      <form
+        [formGroup]="multipleFields"
+        style="display: flex; flex-direction: column"
+      >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card [style.width]="'49%'">
+    <mat-card-content>
+      <b>Content</b>
+      <p>
+        First Name: {{ multipleFields.get("firstName")?.value }}<br />
+        Last Name: {{ multipleFields.get("lastName")?.value }}<br />
+        Email: {{ multipleFields.get("email")?.value }}<br />
+        Password: {{ multipleFields.get("password")?.value }}<br />
+      </p>
+      <span><b>Valid: </b> {{ multipleFields.valid }}</span>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<hr />
+<h2>Multiple field binding (FormBuilder)</h2>
+<div style="display: flex">
+  <mat-card [style.width]="'49%'" style="margin-right: 1em">
+    <mat-card-title>Register Form</mat-card-title>
+    <mat-card-content>
+      <form
+        [formGroup]="multipleFieldsFB"
+        style="display: flex; flex-direction: column"
+      >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card [style.width]="'49%'">
+    <mat-card-content>
+      <b>Content</b>
+      <p>
+        First Name: {{ multipleFieldsFB.get("firstName")?.value }}<br />
+        Last Name: {{ multipleFieldsFB.get("lastName")?.value }}<br />
+        Email: {{ multipleFieldsFB.get("email")?.value }}<br />
+        Password: {{ multipleFieldsFB.get("password")?.value }}<br />
+      </p>
+      <span><b>Valid: </b> {{ multipleFieldsFB.valid }}</span>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<h1 style="margin-top: 2em">Template driven Forms</h1>
+<h2>Single field binding</h2>
+
+<div style="display: flex; justify-content: start; align-items: center">
+  <div style="margin-right: 1em">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Pizza"
+        [(ngModel)]="singleFieldTemplateDriven"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <p>{{ singleFieldTemplateDriven }}</p>
+  </div>
+</div>
+
+<h2>Multiple field binding (formGroup)</h2>
+<div style="display: flex">
+  <mat-card [style.width]="'49%'" style="margin-right: 1em">
+    <mat-card-title>Register Form</mat-card-title>
+    <mat-card-content>
+      <form style="display: flex; flex-direction: column">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            name="firstName"
+            matInput
+            [(ngModel)]="multipleFieldsTemplateDriven.firstName"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            name="lastName"
+            matInput
+            [(ngModel)]="multipleFieldsTemplateDriven.lastName"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            name="email"
+            type="email"
+            matInput
+            [(ngModel)]="multipleFieldsTemplateDriven.email"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            name="password"
+            type="password"
+            matInput
+            [(ngModel)]="multipleFieldsTemplateDriven.password"
+          />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card [style.width]="'49%'">
+    <mat-card-content>
+      <b>Content</b>
+      <p>
+        First Name: {{ multipleFieldsTemplateDriven.firstName }}<br />
+        Last Name: {{ multipleFieldsTemplateDriven.lastName }}<br />
+        Email: {{ multipleFieldsTemplateDriven.email }}<br />
+        Password: {{ multipleFieldsTemplateDriven.password }}<br />
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

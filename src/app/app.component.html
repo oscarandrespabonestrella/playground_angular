@@ -9,6 +9,7 @@
             <mat-list-item [routerLink]="['/filter-by-pipe']"> Filtering by pipe</mat-list-item>
             <mat-list-item [routerLink]="['/ngxs-example']"> Ngxs Example</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menuDate"> Date Management</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="menuForm"> Form Management</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menu">Design patterns</mat-list-item>
         </mat-list>
     </mat-sidenav>
@@ -38,4 +39,13 @@
     <button mat-menu-item [routerLink]="['/date-management/date-helper']">        
         <span>Date Helper</span>
     </button>    
+</mat-menu>
+
+
+
+<mat-menu #menuForm="matMenu" direction="horizontal">
+    <button mat-menu-item [routerLink]="['/basics/form-management']">        
+        <span>Form Management</span>
+    </button>    
+      
 </mat-menu>

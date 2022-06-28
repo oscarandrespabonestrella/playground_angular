@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'date-management',
     loadChildren: () => import('./modules/date-management/date-management.module').then((m) =>m.DateManagementModule)
   },
+  {
+    path: 'basics',
+    loadChildren: () => import('./modules/basics/basics.module').then((m) =>m.BasicsModule)
+  },
 ];
 
 @NgModule({
