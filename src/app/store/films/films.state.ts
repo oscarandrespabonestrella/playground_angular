@@ -9,7 +9,8 @@ import produce from 'immer';
 @State<FilmStateModel>({
   name: 'Ghibli_films',
   defaults: {
-    films: []
+    films: [],
+    people: []
   }
 })
 @Injectable()
@@ -18,9 +19,12 @@ export class FilmsState {
     static getFilms(state: FilmStateModel) {
         return state.films
     }
+
+
+
     @Action(RequestFilms)
     RequestFilms(ctx: StateContext<FilmStateModel>) {
-        return this.webserverService.getGhibliFilms().pipe(tap((films: Film[]) => {
+        return this.webserverService.getGhibliFilms().pipe(tap((films: Film[]) => {                      
             ctx.patchState({
               films: films
             })

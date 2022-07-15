@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
 
   @ViewChild('empTbSort', {static: false}) empTbSort = new MatSort();
 
-  allColumns: string[] = [    
+  allColumns: string[] = [
     "title",
     "original_title",
     "original_title_romanised",
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
     "producer",
     "release_date",
     "running_time",
-    "rt_score",    
+    "rt_score",
     "url",
     "movie_banner",
     "image"
@@ -52,27 +52,25 @@ export class IndexComponent implements OnInit {
     ]),
     map(columns =>  columns.filter((value: string) => this.allColumns.indexOf(value) !== -1))
   );
-  
-  
-  
+
+    variable_x: any[] = [];
+
   getGhibliFilms$: Observable<any> = this.searchInput.valueChanges
-    .pipe(startWith(""),debounceTime(400), distinctUntilChanged(), 
-      switchMap(val => 
+    .pipe(startWith(""),debounceTime(400), distinctUntilChanged(),
+      switchMap(val =>
         this.webServerService.getGhibliFilms()
         .pipe(
-          map(films => films
-            .filter((film: Film) => film.title.toLowerCase().includes(val.toLowerCase()))            
-          )
+
         )
       )
   );
 
-  sortData(data:any){    
+  sortData(data:any){
     data.sort = this.empTbSort;
     console.log(this.empTbSort);
   }
 
-  
+
 
 
 

@@ -13,5 +13,4 @@ export class AppComponent {
   toggleSidebar() { 
     this.sideNavOpen = !this.sideNavOpen;
   }
-
 }

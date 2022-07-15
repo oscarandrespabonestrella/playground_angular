@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then((m) =>m.HomeModule)
   },
   {
-    path: 'ngxs-example',
+    path: 'flux-architecture',
     loadChildren: () => import('./modules/flux-architecture/flux-architecture.module').then((m) =>m.FluxArchitectureModule)
   },
   {
@@ -22,6 +22,7 @@ const routes: Routes = [
     path: 'basics',
     loadChildren: () => import('./modules/basics/basics.module').then((m) =>m.BasicsModule)
   },
+  
 ];
 
 @NgModule({

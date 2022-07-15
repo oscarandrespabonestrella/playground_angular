@@ -13,13 +13,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { NgrxExampleComponent } from './pages/ngrx-example/ngrx-example.component';
+
 
 
 @NgModule({
   declarations: [
     EditModalComponent,
     ImagePreviewComponent,
-    NgxsExampleComponent
+    NgxsExampleComponent,
+    NgrxExampleComponent,
   ],
   imports: [
     CommonModule,

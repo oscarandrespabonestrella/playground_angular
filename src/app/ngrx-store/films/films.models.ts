@@ -20,6 +20,5 @@ export interface Film{
 
   
   export interface FilmStateModel{
-    films: Film[],
-    people: string[],
+    films: Film[]
   }

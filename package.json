@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "ngxs": "ngxs",
     "start": "ng serve",
     "build": "ng build",
     "buildNetlify": " CI=''ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "install-eff": "ng add @ngrx/effects --spec=false --group=true"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,8 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@ngrx/effects": "^14.0.2",
+    "@ngrx/store": "^14.0.2",
     "@ngxs/logger-plugin": "^3.7.4-dev.master-770aa34",
     "@ngxs/store": "^3.7.4",
     "@nrwl/angular": "14.3.6",
@@ -34,6 +38,7 @@
     "@angular-devkit/build-angular": "^14.0.2",
     "@angular/cli": "~14.0.2",
     "@angular/compiler-cli": "^14.0.0",
+    "@ngrx/schematics": "^14.0.2",
     "@ngxs/devtools-plugin": "^3.7.4",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.1.0",

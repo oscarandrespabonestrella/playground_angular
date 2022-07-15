@@ -4,7 +4,7 @@ import { DateHelperService } from '../../services/date-helper.service';
 @Component({
   selector: 'app-example-date-helper',
   templateUrl: './example-date-helper.component.html',
-  styleUrls: ['./example-date-helper.component.scss']
+  styleUrls: ['./example-date-helper.component.scss'],  
 })
 export class ExampleDateHelperComponent{
 

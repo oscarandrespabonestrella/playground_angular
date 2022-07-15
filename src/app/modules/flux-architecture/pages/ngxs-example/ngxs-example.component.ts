@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ComponentRef, OnInit, ViewChild,  } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   debounceTime, distinctUntilChanged,
@@ -23,9 +23,10 @@ export class NgxsExampleComponent implements OnInit {
 
   @ViewChild('empTbSort', {static: false}) empTbSort = new MatSort();
 
+
   @Select(FilmsState.getFilms) films$!: Observable<Film[]>;
 
-  allColumns: string[] = [    
+  allColumns: string[] = [
     "title",
     "original_title",
     "original_title_romanised",
@@ -34,7 +35,7 @@ export class NgxsExampleComponent implements OnInit {
     "producer",
     "release_date",
     "running_time",
-    "rt_score",    
+    "rt_score",
     "url",
     "movie_banner",
     "image",
@@ -61,22 +62,22 @@ export class NgxsExampleComponent implements OnInit {
     ]),
     map(columns =>  columns.filter((value: string) => this.allColumns.indexOf(value) !== -1))
   );
-  
-  
-  
+
+
+
   getGhibliFilms$: Observable<any> = this.searchInput.valueChanges
-    .pipe(startWith(""),debounceTime(400), distinctUntilChanged(), 
-      switchMap(val => 
+    .pipe(startWith(""),debounceTime(400), distinctUntilChanged(),
+      switchMap(val =>
         this.films$
         .pipe(
           map(films => films
-            .filter((film: Film) => film.title.toLowerCase().includes(val.toLowerCase()))            
+            .filter((film: Film) => film.title.toLowerCase().includes(val.toLowerCase()))
           )
         )
       )
   );
 
-  sortData(data:any){    
+  sortData(data:any){
     data.sort = this.empTbSort;
     console.log(this.empTbSort);
   }
@@ -91,7 +92,7 @@ export class NgxsExampleComponent implements OnInit {
     dialogConfig.minWidth = "50%";
     const dialogRef = this.dialog.open(EditModalComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {      
+    dialogRef.afterClosed().subscribe(result => {
       this.store.dispatch(new EditFilm(result.id, result.title, result.description));
     });
   }
@@ -104,12 +105,23 @@ export class NgxsExampleComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ImagePreviewComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {      
-      
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 
 
+
+  dataSample: any[] = [
+    '2sadsad',
+    'asdasdsa',
+    'sadasd'
+  ]
+
+  changeExample (){
+    this.dataSample = [...this.dataSample, 'test'];
+
+  }
 
   constructor(private store: Store, private dialog: MatDialog) { }
 

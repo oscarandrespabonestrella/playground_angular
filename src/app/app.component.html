@@ -6,11 +6,12 @@
         </div>
         <mat-list>
             <mat-list-item [routerLink]="['/']"> Filtering by switchmapping</mat-list-item>
-            <mat-list-item [routerLink]="['/filter-by-pipe']"> Filtering by pipe</mat-list-item>
-            <mat-list-item [routerLink]="['/ngxs-example']"> Ngxs Example</mat-list-item>
+            <mat-list-item [routerLink]="['/filter-by-pipe']"> Filtering by pipe</mat-list-item>            
+            <mat-list-item [matMenuTriggerFor]="menuFlux"> Flux Architecture</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menuDate"> Date Management</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menuForm"> Form Management</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menu">Design patterns</mat-list-item>
+            <mat-list-item [routerLink]="['/basics/detection-strategy']">Detection strategy</mat-list-item>
         </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -46,6 +47,16 @@
 <mat-menu #menuForm="matMenu" direction="horizontal">
     <button mat-menu-item [routerLink]="['/basics/form-management']">        
         <span>Form Management</span>
+    </button>    
+      
+</mat-menu>
+
+<mat-menu #menuFlux="matMenu" direction="horizontal">
+    <button mat-menu-item [routerLink]="['/flux-architecture']">        
+        <span>Ngxs Example</span>
+    </button>    
+    <button mat-menu-item [routerLink]="['/flux-architecture/ngrx']">        
+        <span>Ngrx Example</span>
     </button>    
       
 </mat-menu>

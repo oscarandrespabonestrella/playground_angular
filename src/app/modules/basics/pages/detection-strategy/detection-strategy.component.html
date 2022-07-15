@@ -1,0 +1,21 @@
+
+<button mat-raised-button color="primary" (click)="pushInfo()" style="margin-right: 1em;">Change variable without change reference</button> 
+<button mat-raised-button color="primary" (click)="changeReferal()">Change variable changing reference</button>
+
+<br /><br />
+
+<app-detection-onpush [test]="variableTest" ></app-detection-onpush>
+
+<br /> <br />
+
+<input #inputAquaticCreature type="text" placeholder="Enter a new creature">
+<button (click)="addAcquaticCreature(inputAquaticCreature.value)">Add creature</button>
+
+<br /> <br />
+
+
+<app-mark-for-change-example [data]="aquaticCreatures"></app-mark-for-change-example>
+
+<app-array-component [arrayList]="['abc','def','qwe']"></app-array-component>
+
+{{films$ | async | json}}

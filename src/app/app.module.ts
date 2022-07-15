@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,13 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { FilmsState } from './store/films/films.state';
 import { environment } from 'src/environments/environment';
+import { ActionReducerMap, StoreModule } from '@ngrx/store';
+import { counterReducer } from './ngrx-store/counter.reducer';
+import { filmReducer } from './ngrx-store/films/films.reducer';
+import { EffectsModule } from '@ngrx/effects';
+
+
+
 
 @NgModule({
   declarations: [
@@ -33,6 +40,7 @@ import { environment } from 'src/environments/environment';
       developmentMode: !environment.production
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    StoreModule.forRoot({ count: counterReducer, films: filmReducer})    
   ],
   providers: [],
   bootstrap: [AppComponent]
