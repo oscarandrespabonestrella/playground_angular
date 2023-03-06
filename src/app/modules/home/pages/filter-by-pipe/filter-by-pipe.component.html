@@ -1,56 +1,60 @@
 <div>
-    <h2>Filtering using pipe</h2>
-  </div>
+  <h2>Filtering using pipe</h2>
+</div>
 
+<div style="display: flex; justify-content: space-between">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Search by Title</mat-label>
+    <input matInput [formControl]="searchInput" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
 
-  <div style="display: flex; justify-content: space-between;">
-    <mat-form-field appearance="legacy" class="full-width" >
-      <mat-label>Search by Title</mat-label>
-      <input matInput  [formControl]="searchInput">
-      <mat-icon matSuffix >search</mat-icon>
-    </mat-form-field>    
+<table
+  mat-table
+  [dataSource]="
+    getGhibliSpecies$ | async | customfilter : 'name' : searchInput.value
+  "
+  class="mat-elevation-z8"
+  width="100%"
+>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
 
-  </div>   
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
 
-<table mat-table [dataSource]="getGhibliSpecies$ | async | customfilter: 'name': searchInput.value" class="mat-elevation-z8" width="100%">    
-    
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="classification">
-      <th mat-header-cell *matHeaderCellDef> Classification </th>
-      <td mat-cell *matCellDef="let element"> {{element.classification}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="eye_colors">
-      <th mat-header-cell *matHeaderCellDef> Eye Colors </th>
-      <td mat-cell *matCellDef="let element"> {{element.eye_colors}} </td>
-    </ng-container>    
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="hair_colors">
-      <th mat-header-cell *matHeaderCellDef> Hair colors </th>
-      <td mat-cell *matCellDef="let element"> {{element.hair_colors}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="people">
-      <th mat-header-cell *matHeaderCellDef> People </th>
-      <td mat-cell *matCellDef="let element"> {{element.people}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="url"> 
-      <th mat-header-cell *matHeaderCellDef> Url</th>
-      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
-    </ng-container>
-    
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  <ng-container matColumnDef="classification">
+    <th mat-header-cell *matHeaderCellDef>Classification</th>
+    <td mat-cell *matCellDef="let element">{{ element.classification }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="eye_colors">
+    <th mat-header-cell *matHeaderCellDef>Eye Colors</th>
+    <td mat-cell *matCellDef="let element">{{ element.eye_colors }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="hair_colors">
+    <th mat-header-cell *matHeaderCellDef>Hair colors</th>
+    <td mat-cell *matCellDef="let element">{{ element.hair_colors }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="people">
+    <th mat-header-cell *matHeaderCellDef>People</th>
+    <td mat-cell *matCellDef="let element">{{ element.people }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="url">
+    <th mat-header-cell *matHeaderCellDef>Url</th>
+    <td mat-cell *matCellDef="let element">{{ element.url }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

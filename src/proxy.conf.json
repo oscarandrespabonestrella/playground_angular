@@ -1,9 +1,9 @@
 {
   "/api": {
-    "target": "https://ghibliapi.herokuapp.com",
+    "target": "https://ghibli-api-6jko.onrender.com/",
     "secure": false,
     "pathRewrite": {
-      "^/api": "https://ghibliapi.herokuapp.com"
+      "^/api": "https://ghibli-api-6jko.onrender.com/"
     },
     "changeOrigin": true,
     "logLevel": "debug"

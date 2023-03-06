@@ -10,92 +10,63 @@
     <tr>
       <td>Year:</td>
       <td>
-        <mat-slider
-          #yearRef
-          min="-100"
-          max="100"
-          [value]="yearDelta"
-          (input)="yearDelta = +yearRef.value"
-        ></mat-slider>
+        <mat-slider #yearRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="yearDelta" />
+        </mat-slider>
       </td>
       <td>{{ yearDelta }}</td>
     </tr>
     <tr>
       <td>Month:</td>
       <td>
-        <mat-slider
-          #monthRef
-          min="-100"
-          max="100"
-          [value]="monthDelta"
-          (input)="monthDelta = +monthRef.value"
-        ></mat-slider>
+        <mat-slider #monthRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="monthDelta" />
+        </mat-slider>
       </td>
       <td>{{ monthDelta }}</td>
     </tr>
     <tr>
       <td>Day:</td>
       <td>
-        <mat-slider
-          #dayRef
-          min="-100"
-          max="100"
-          [value]="dayDelta"
-          (input)="dayDelta = +dayRef.value"
-        ></mat-slider>
+        <mat-slider #dayRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="dayDelta" />
+        </mat-slider>
       </td>
       <td>{{ dayDelta }}</td>
     </tr>
     <tr>
       <td>Hour:</td>
       <td>
-        <mat-slider
-          #hourRef
-          min="-100"
-          max="100"
-          [value]="hourDelta"
-          (input)="hourDelta = +hourRef.value"
-        ></mat-slider>
+        <mat-slider #hourRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="hourDelta" />
+        </mat-slider>
       </td>
       <td>{{ hourDelta }}</td>
     </tr>
     <tr>
       <td>Minute:</td>
       <td>
-        <mat-slider
-          #minuteRef
-          min="-100"
-          max="100"
-          [value]="minuteDelta"
-          (input)="minuteDelta = +minuteRef.value"
-        ></mat-slider>
+        <mat-slider #minuteRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="hourDelta" />
+        </mat-slider>
       </td>
       <td>{{ minuteDelta }}</td>
     </tr>
     <tr>
       <td>Seconds:</td>
       <td>
-        <mat-slider
-          #secondRef
-          min="-100"
-          max="100"
-          [value]="secondDelta"
-          (input)="secondDelta = +secondRef.value"
-        ></mat-slider
-        >>
+        <mat-slider #secondRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="hourDelta" />
+        </mat-slider>
       </td>
       <td>{{ secondDelta }}</td>
     </tr>
     <tr>
       <td>Millis:</td>
       <td>
-        <mat-slider
-          #millisecondRef
-          min="-100"
-          max="100"
-          [value]="millisecondDelta"
-          (input)="millisecondDelta = +millisecondRef.value"
-        ></mat-slider>
+        <mat-slider #millisecondRef min="-100" max="100">
+          <input matSliderThumb [(ngModel)]="millisecondDelta" />
+        </mat-slider>
       </td>
       <td>{{ yearDelta }}</td>
     </tr>

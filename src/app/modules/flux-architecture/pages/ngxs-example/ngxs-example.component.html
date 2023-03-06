@@ -1,157 +1,192 @@
-  <div>
-    <h2>Ngxs Example</h2>
-  </div>
+<div>
+  <h2>Ngxs Example</h2>
+</div>
 
-  <div style="display: flex; justify-content: space-between;">
-    <mat-form-field appearance="legacy" class="full-width" >
-      <mat-label>Search by Title</mat-label>
-      <input matInput  [formControl]="searchInput">
-      <mat-icon matSuffix >search</mat-icon>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Columns</mat-label>
-      <mat-select  #select multiple [formControl]="columns">
-        <!-- <div class="select-all">
+<div style="display: flex; justify-content: space-between">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Search by Title</mat-label>
+    <input matInput [formControl]="searchInput" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Columns</mat-label>
+    <mat-select #select multiple [formControl]="columns">
+      <!-- <div class="select-all">
             <mat-checkbox [(ngModel)]="allSelected">Select All</mat-checkbox>
         </div> -->
 
-        <mat-option  *ngFor="let column of allColumns" [value]="column">
-          {{column}}
-        </mat-option>
-
-      </mat-select>
-    </mat-form-field>
-
-  </div>
+      <mat-option *ngFor="let column of allColumns" [value]="column">
+        {{ column }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <ng-container *ngIf="displayedColumns$ | async as displayedColumns">
-  <ng-container *ngIf="{dataSource: (getGhibliFilms$ | async) } as observable">
+  <ng-container *ngIf="{ dataSource: (getGhibliFilms$ | async) } as observable">
+    <table
+      mat-table
+      [dataSource]="observable.dataSource"
+      class="mat-elevation-z8"
+      width="100%"
+      matSort
+      multiTemplateDataRows
+      #empTbSort="matSort"
+      (matSortChange)="sortData(observable.dataSource)"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
-      <table mat-table [dataSource]="observable.dataSource" class="mat-elevation-z8" width="100%" matSort multiTemplateDataRows #empTbSort="matSort" (matSortChange)="sortData(observable.dataSource)">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
+      <ng-container matColumnDef="original_title">
+        <th mat-header-cell *matHeaderCellDef>Original Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.original_title }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-        </ng-container>
+      <ng-container matColumnDef="original_title_romanised">
+        <th mat-header-cell *matHeaderCellDef>Original Title Romanised</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.original_title_romanised }}
+        </td>
+      </ng-container>
 
-        <ng-container matColumnDef="original_title">
-          <th mat-header-cell *matHeaderCellDef> Original Title </th>
-          <td mat-cell *matCellDef="let element"> {{element.original_title}} </td>
-        </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="original_title_romanised">
-          <th mat-header-cell *matHeaderCellDef> Original Title Romanised </th>
-          <td mat-cell *matCellDef="let element"> {{element.original_title_romanised}} </td>
-        </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="director">
+        <th mat-header-cell *matHeaderCellDef>Director</th>
+        <td mat-cell *matCellDef="let element">{{ element.director }}</td>
+      </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef> Description </th>
-          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-        </ng-container>
+      <ng-container matColumnDef="producer">
+        <th mat-header-cell *matHeaderCellDef>Producer</th>
+        <td mat-cell *matCellDef="let element">{{ element.producer }}</td>
+      </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="director">
-          <th mat-header-cell *matHeaderCellDef> Director </th>
-          <td mat-cell *matCellDef="let element"> {{element.director}} </td>
-        </ng-container>
+      <ng-container matColumnDef="release_date">
+        <th mat-header-cell *matHeaderCellDef>Release date</th>
+        <td mat-cell *matCellDef="let element">{{ element.release_date }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="producer">
-          <th mat-header-cell *matHeaderCellDef> Producer</th>
-          <td mat-cell *matCellDef="let element"> {{element.producer}} </td>
-        </ng-container>
+      <ng-container matColumnDef="running_time">
+        <th mat-header-cell *matHeaderCellDef>Running time</th>
+        <td mat-cell *matCellDef="let element">{{ element.running_time }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="release_date">
-          <th mat-header-cell *matHeaderCellDef> Release date </th>
-          <td mat-cell *matCellDef="let element"> {{element.release_date}} </td>
-        </ng-container>
+      <ng-container matColumnDef="rt_score">
+        <th mat-header-cell *matHeaderCellDef>RT Score</th>
+        <td mat-cell *matCellDef="let element">{{ element.rt_score }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="running_time">
-          <th mat-header-cell *matHeaderCellDef> Running time </th>
-          <td mat-cell *matCellDef="let element"> {{element.running_time}} </td>
-        </ng-container>
+      <ng-container matColumnDef="people">
+        <th mat-header-cell *matHeaderCellDef>People</th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let person of element.people">
+              <img [src]="person" alt="" />
+            </li>
+          </ul>
+        </td>
+      </ng-container>
 
-        <ng-container matColumnDef="rt_score">
-          <th mat-header-cell *matHeaderCellDef> RT Score </th>
-          <td mat-cell *matCellDef="let element"> {{element.rt_score}} </td>
-        </ng-container>
+      <ng-container matColumnDef="species">
+        <th mat-header-cell *matHeaderCellDef>Species</th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let specie of element.species">
+              {{ specie }}
+            </li>
+          </ul>
+        </td>
+      </ng-container>
 
-        <ng-container matColumnDef="people">
-          <th mat-header-cell *matHeaderCellDef> People </th>
-          <td mat-cell *matCellDef="let element">
-            <ul>
-              <li *ngFor="let person of element.people">
-                <img [src]="person" alt="" />
-            </ul>
+      <ng-container matColumnDef="locations">
+        <th mat-header-cell *matHeaderCellDef>locations</th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let location of element.locations">
+              {{ location }}
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="vehicles">
+        <th mat-header-cell *matHeaderCellDef>vehicles</th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let vehicle of element.vehicles">
+              {{ vehicle }}
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>Url</th>
+        <td mat-cell *matCellDef="let element">
+          <a [href]="element.url" target="_blank">Link</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Image</th>
+        <td mat-cell *matCellDef="let element">
+          <img
+            [src]="element.image"
+            width="70px"
+            alt=""
+            style="cursor: pointer"
+            (click)="previewImage(element.image)"
+          />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="movie_banner">
+        <th mat-header-cell *matHeaderCellDef>Movie Banner</th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.movie_banner" width="70px" alt="" />
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <tr>
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+        </tr>
+        <tr>
+          <td mat-cell *matCellDef="let row" style="width: 10%">
+            <button
+              mat-icon-button
+              color="primary"
+              title="Edit Contact"
+              (click)="editFilm(row)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="primary"
+              title="Delete Film"
+              (click)="deleteFilm(row.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
           </td>
-        </ng-container>
+        </tr>
 
-        <ng-container matColumnDef="species">
-          <th mat-header-cell *matHeaderCellDef> Species </th>
-          <td mat-cell *matCellDef="let element">
-            <ul>
-              <li *ngFor="let specie of element.species">
-                {{specie}}
-            </ul>
-          </td>
-        </ng-container>
+        <tr></tr
+      ></ng-container>
 
-        <ng-container matColumnDef="locations">
-          <th mat-header-cell *matHeaderCellDef> locations </th>
-          <td mat-cell *matCellDef="let element">
-            <ul>
-              <li *ngFor="let location of element.locations">
-                {{location}}
-            </ul>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="vehicles">
-          <th mat-header-cell *matHeaderCellDef> vehicles </th>
-          <td mat-cell *matCellDef="let element">
-            <ul>
-              <li *ngFor="let vehicle of element.vehicles">
-                {{vehicle}}
-            </ul>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="url">
-          <th mat-header-cell *matHeaderCellDef> Url </th>
-          <td mat-cell *matCellDef="let element">
-            <a [href]="element.url" target="_blank">Link</a>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="image">
-          <th mat-header-cell *matHeaderCellDef> Image </th>
-          <td mat-cell *matCellDef="let element">
-            <img [src]="element.image"  width="70px" alt="" style="cursor: pointer" (click)="previewImage(element.image)"/>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="movie_banner">
-          <th mat-header-cell *matHeaderCellDef> Movie Banner </th>
-          <td mat-cell *matCellDef="let element">
-            <img [src]="element.movie_banner"  width="70px" alt="">
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="action">
-          <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
-          <tr>
-            <td mat-cell *matCellDef="let row" style="width:10%">
-              <button mat-icon-button color="primary"  title="Edit Contact" (click)="editFilm(row)"><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button color="primary"  title="Delete Film" (click)="deleteFilm(row.id)"><mat-icon>delete</mat-icon></button>
-            </td>
-          <tr>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </ng-container>
 </ng-container>
-

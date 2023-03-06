@@ -9,6 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { ExampleDateHelperComponent } from './pages/example-date-helper/example-date-helper.component';
 import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatListModule } from '@angular/material/list';
     MatPaginatorModule,
     MatSliderModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ]
 })
 export class DateManagementModule { }
