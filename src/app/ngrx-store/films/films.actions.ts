@@ -1,4 +1,4 @@
-import { createAction, props } from '@ngrx/store';
+import { Action, createAction, props } from '@ngrx/store';
 import { Film } from './films.models';
 
 export const RequestFilms = createAction(
@@ -12,7 +12,7 @@ export const SetFilms = createAction(
 
 export const DeleteFilm = createAction(
     '[Ghibli Films] Delete film',
-    props<{ filmId: string}>()
+    props<{ data: string }>()
 );
     
 
@@ -20,3 +20,4 @@ export const EditFilm = createAction(
     '[Ghibli Films] Edit film',
     props<{ filmId: string, title: string, description: string}>()
 );
+

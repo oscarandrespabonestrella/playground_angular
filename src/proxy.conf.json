@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://ghibliapi.herokuapp.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": "https://ghibliapi.herokuapp.com"
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

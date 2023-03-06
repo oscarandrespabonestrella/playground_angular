@@ -18,4 +18,10 @@
 
 <app-array-component [arrayList]="['abc','def','qwe']"></app-array-component>
 
-{{films$ | async | json}}
+<input type="text" [(ngModel)]="searchCreature">
+
+<div *ngFor="let item of testAnimals | customFilter: searchCreature : 'name'">
+    {{item | json}}
+</div>
+
+{{observableNumbers | scanPipe | async}}

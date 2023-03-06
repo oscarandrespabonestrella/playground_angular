@@ -28,7 +28,8 @@ export class FilmsState {
             ctx.patchState({
               films: films
             })
-        }))
+        }),)
+
     }
 
     @Action(DeleteFilm)

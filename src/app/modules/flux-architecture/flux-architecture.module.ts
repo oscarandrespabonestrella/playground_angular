@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { NgrxExampleComponent } from './pages/ngrx-example/ngrx-example.component';
+import { EffectsModule } from '@ngrx/effects';
+import { FilmEffects } from '../../ngrx-store/films/films.effects';
 
 
 
@@ -34,7 +36,8 @@ import { NgrxExampleComponent } from './pages/ngrx-example/ngrx-example.componen
     MatInputModule,
     MatSelectModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    EffectsModule.forFeature([FilmEffects])
 
   ]
 })

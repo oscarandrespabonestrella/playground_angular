@@ -8,7 +8,8 @@ const routes: Routes = [
   },
   {
     path: 'flux-architecture',
-    loadChildren: () => import('./modules/flux-architecture/flux-architecture.module').then((m) =>m.FluxArchitectureModule)
+    loadChildren: () => import('./modules/flux-architecture/flux-architecture.module').then((m) =>m.FluxArchitectureModule),
+    
   },
   {
     path: 'design-patterns',
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'basics',
     loadChildren: () => import('./modules/basics/basics.module').then((m) =>m.BasicsModule)
+  },
+  {
+    path: 'stand-alone',
+    loadComponent: () => import('./modules/stand-alone/stand-alone.component').then((m) =>m.StandAloneComponent)
   },
   
 ];

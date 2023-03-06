@@ -12,6 +12,9 @@
             <mat-list-item [matMenuTriggerFor]="menuForm"> Form Management</mat-list-item>
             <mat-list-item [matMenuTriggerFor]="menu">Design patterns</mat-list-item>
             <mat-list-item [routerLink]="['/basics/detection-strategy']">Detection strategy</mat-list-item>
+            <mat-list-item [routerLink]="['/basics/comm-example']">Communication example</mat-list-item>
+            <mat-list-item [routerLink]="['/stand-alone']">Standalone component</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="menuAnimation">Animation</mat-list-item>
         </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -60,3 +63,14 @@
     </button>    
       
 </mat-menu>
+
+<mat-menu #menuAnimation="matMenu" direction="horizontal">
+    <button mat-menu-item [routerLink]="['/basics/animation']">        
+        <span>Component animation</span>
+    </button>    
+    <button mat-menu-item [routerLink]="['/basics/route-animation']">        
+        <span>Route animation</span>
+    </button>    
+      
+</mat-menu>
+

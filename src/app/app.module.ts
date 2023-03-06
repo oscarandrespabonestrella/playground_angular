@@ -16,8 +16,9 @@ import { FilmsState } from './store/films/films.state';
 import { environment } from 'src/environments/environment';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { counterReducer } from './ngrx-store/counter.reducer';
-import { filmReducer } from './ngrx-store/films/films.reducer';
+import { FilmReducer } from './ngrx-store/films/films.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -40,7 +41,13 @@ import { EffectsModule } from '@ngrx/effects';
       developmentMode: !environment.production
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    StoreModule.forRoot({ count: counterReducer, films: filmReducer})    
+    StoreModule.forRoot({ count: counterReducer, films: FilmReducer}),
+    EffectsModule.forRoot(),    
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 export class RequestFilms {
-    static readonly type = '[Ghibli Films] Reques film list';
+    static readonly type = '[Ghibli Films] Request film list';
     constructor() {}
 }
 

@@ -1,0 +1,21 @@
+
+<app-child 
+[name]="'test name child'" 
+nameWithInterceptor="test name child" 
+nick="tst nickname"
+(clicked)="buttonClicked($event)"
+></app-child>
+
+<h3>parent variables</h3>
+
+
+
+{{childButtonClicked}}
+
+
+<button (click)="launchAlert()"> Launch Alert</button>
+
+
+<h3>Announced mission</h3>
+
+{{annauncedMission$ | async}}

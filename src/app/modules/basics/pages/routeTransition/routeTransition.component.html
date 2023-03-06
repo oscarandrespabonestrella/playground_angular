@@ -1,0 +1,9 @@
+
+<button [routerLink]="[ '/basics/route-animation/test1']"> Test 1</button>
+<button [routerLink]="[ '/basics/route-animation/test2']"> Test 2</button>
+
+<hr>
+
+<div [@routeAnimations]="getRouteAnimationData()">
+  <router-outlet ></router-outlet>
+</div>

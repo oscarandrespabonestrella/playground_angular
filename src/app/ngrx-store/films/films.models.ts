@@ -18,7 +18,6 @@ export interface Film{
     url: string;
   }
 
-  
-  export interface FilmStateModel{
+  export interface FilmStateModel  {
     films: Film[]
   }

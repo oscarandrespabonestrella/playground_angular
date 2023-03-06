@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   debounceTime, distinctUntilChanged,
   map,
-  Observable, startWith, switchMap, tap, scan
+  Observable, startWith, switchMap, tap, scan, Subscription, Subject, takeUntil
 } from 'rxjs';
 import { Film, WebServerService } from '../../../../core/services/web-services/web-server.service';
 import {MatSort, Sort} from '@angular/material/sort';
@@ -14,7 +14,7 @@ import {MatSort, Sort} from '@angular/material/sort';
   selector: 'app-index',
   templateUrl: './index.component.html'
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, OnDestroy {
 
   @ViewChild('empTbSort', {static: false}) empTbSort = new MatSort();
 
@@ -41,6 +41,8 @@ export class IndexComponent implements OnInit {
   ]);
 
 
+  mainSuscription: Subject<any> = new Subject();
+
   searchInput: FormControl =  new FormControl("");
 
   displayedColumns$: Observable<string[]> = this.columns.valueChanges.pipe(
@@ -60,10 +62,13 @@ export class IndexComponent implements OnInit {
       switchMap(val =>
         this.webServerService.getGhibliFilms()
         .pipe(
-
+          map(films => films.filter(film => film.title.toLowerCase().includes(val.toLowerCase())))
         )
       )
   );
+
+
+
 
   sortData(data:any){
     data.sort = this.empTbSort;
@@ -76,7 +81,11 @@ export class IndexComponent implements OnInit {
 
   constructor(private webServerService: WebServerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+  }
+
+  ngOnDestroy(): void {
+   
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Film } from 'src/app/store/films/films.models';
 import { FilmsState } from 'src/app/store/films/films.state';
 
@@ -30,8 +30,31 @@ export class DetectionStrategyComponent implements OnInit {
     this.aquaticCreatures.next([newAquaticCreature, ...this.aquaticCreatures.value]);
   }
   
+  searchCreature: string = "";
+
+  testAnimals: any[]= [
+    {
+      name: 'shark',
+      type: 'fish',
+    },
+    {
+      name: 'dolphin',
+      type: 'mammal',
+    },
+    {
+      name: 'Bear',
+      type: 'mammal',
+    },
+    {
+      name: 'ant',
+      type: 'insect',
+    }
+  ]
+
+  observableNumbers: Observable<any> = of(1,2,3,4)
 
 
+  formatDate(date: string){}
 
   constructor() { }
 
