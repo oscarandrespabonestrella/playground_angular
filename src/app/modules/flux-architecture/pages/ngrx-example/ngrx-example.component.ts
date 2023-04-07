@@ -6,7 +6,7 @@ import { map, Observable, Subscription, startWith, distinctUntilChanged, debounc
 import { DeleteFilm, EditFilm } from '../../../../ngrx-store/films/films.actions';
 import { Film, FilmStateModel } from '../../../../store/films/films.models';
 import { decrement, increment, reset } from '../../../../ngrx-store/counter.actions';
-import { filmSelector } from '../../../../ngrx-store/films/films.selectors';
+
 import { EditModalComponent } from '../../components/edit-modal/edit-modal.component';
 import { ImagePreviewComponent } from '../../components/image-preview/image-preview.component';
 
@@ -106,7 +106,7 @@ export class NgrxExampleComponent implements OnInit {
 
  
   constructor(private store: Store<{count: number, films: FilmStateModel}>, private dialog: MatDialog){ 
-    this.films$ = store.pipe(select(filmSelector));
+    // this.films$ = store.pipe(select(filmSelector));
   }
 
   ngOnInit(): void {

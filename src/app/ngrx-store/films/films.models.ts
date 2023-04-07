@@ -19,5 +19,6 @@ export interface Film{
   }
 
   export interface FilmStateModel  {
-    films: Film[]
+    films: Film[],
+    count: number
   }

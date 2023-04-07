@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 export interface Specie{
   "id": string;
@@ -36,15 +37,16 @@ export interface Film{
   providedIn: 'root'
 })
 export class WebServerService {
+  environtment = environment.api;
   getGhibliFilms(): Observable<Film[]> {
-    return this.httpClient.get<Film[]>('/api/films');
+    return this.httpClient.get<Film[]>(`${this.environtment}/films`);
   }
   getGhibliSpecies(): Observable<Specie[]> {
-    return this.httpClient.get<Specie[]>('/api/species');
+    return this.httpClient.get<Specie[]>(`${this.environtment}/species`);
   }
 
   validateDate(data: any){
-    return this.httpClient.get<any>('https://f07d0c44-dd43-451a-af7a-56200b9e05e0.mock.pstmn.io/checkDate');
+    return this.httpClient.get<any>(`https://f07d0c44-dd43-451a-af7a-56200b9e05e0.mock.pstmn.io/checkDate`);
   }
 
 

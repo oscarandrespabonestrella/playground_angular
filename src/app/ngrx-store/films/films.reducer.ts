@@ -4,7 +4,8 @@ import { FilmStateModel } from './films.models';
 
 
 export const filmState: FilmStateModel = {
-        films: []
+    films: [],
+    count: 0
 };
 
 export const FilmReducer = createReducer(
